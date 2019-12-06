@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import HomePage from './container/HomePage';
+import UploadPage from './container/UploadPage';
+import CategoryPage from './container/CategoryPage';
+import GlobalModal from './container/GlobalModal';
+
+class App extends React.Component {
+  render() {
+    return (
+      <>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/upload-profile" component={UploadPage} />
+          <Route path="/category" component={CategoryPage} />
+          <Route exact path="/global-modal" component={GlobalModal} />        
+        </Switch>
+        <GlobalModal />
+      </>
+    );
+  }
 }
 
 export default App;
